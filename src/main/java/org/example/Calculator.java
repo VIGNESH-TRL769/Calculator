@@ -9,7 +9,7 @@ class Operation
 {
     public static final Logger Log=Logger.getLogger(("InfoLogging"));
     
-    static int result;
+    int result;
     private int value;
 
     public void setValue(int value)
@@ -67,7 +67,7 @@ public class Calculator
         Multiplication mul=new Multiplication();
         Scanner input=new Scanner(System.in);
         Log.info("Enter the Value:");
-        Operation.result = input.nextInt();
+        add.result = input.nextInt();
         int value=0;
         while(true)
         {
