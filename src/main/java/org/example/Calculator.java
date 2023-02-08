@@ -9,7 +9,7 @@ class Operation
 {
     public static final Logger Log=Logger.getLogger(("InfoLogging"));
     
-    public static int result;
+    static int result;
     private int value;
 
     public void setValue(int value)
@@ -91,6 +91,7 @@ public class Calculator
                     Log.info("-----Thannk You-----");
                     return;
                 }
+                default -> Log.info("Please Enter Valid Details");
             }
         }
     }
