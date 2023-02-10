@@ -5,7 +5,7 @@ interface Icalculator
 {
      void calc(int value);
 }
-class Operation
+abstract class Operation
 {
     public static final Logger Log=Logger.getLogger(("InfoLogging"));
     
@@ -71,7 +71,7 @@ public class Calculator
         int value=0;
         while(true)
         {
-            Log.info("1.Addtion(+)\n2.Substration(-)\n3.Multiplication(*)\n4.Division(/)\n5.Result\n6.Exit\nEnter The Choice:\n");
+            Log.info("\n1.Addtion(+)\n2.Substration(-)\n3.Multiplication(*)\n4.Division(/)\n5.Result\n6.Exit\nEnter The Choice:\n");
             int key = input.nextInt();
             if(key!=5)
             {
