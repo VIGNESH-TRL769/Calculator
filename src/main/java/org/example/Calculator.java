@@ -46,7 +46,13 @@ class Division extends Operation implements Icalculator
 {
     public void calc(int value)
     {
-        result=result/value;
+        try {
+            result = result / value;
+        }catch (Exception e)
+        {
+            String p=""+e;
+            Log.info(p);
+        }
     }
 }
 class Multiplication extends Operation implements Icalculator
@@ -71,7 +77,7 @@ public class Calculator
         int value=0;
         while(true)
         {
-            Log.info("\n1.Addtion(+)\n2.Substration(-)\n3.Multiplication(*)\n4.Division(/)\n5.Result\n6.Exit\nEnter The Choice:\n");
+            Log.info("\n1.Addtion(+)\n2.Substration(-)\n3.Multiplication(*)\n4.Division(/)\n5.Result\n6.Exit\nEnter The Choice:");
             int key = input.nextInt();
             if(key!=5)
             {
