@@ -45,7 +45,16 @@ class Division extends Operation implements Icalculator
 {
     public int calc(int value,int result)
     {
-        return result/value;
+        try
+        {
+          return result/value;
+        }
+        catch (Exception e)
+        {
+            String p=""+e;
+            Log.info(p);
+            return result;
+        }
     }
 }
 class Multiplication extends Operation implements Icalculator
