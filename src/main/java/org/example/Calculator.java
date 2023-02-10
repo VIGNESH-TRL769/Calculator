@@ -3,13 +3,12 @@ import java.util.Scanner;
 import java.util.logging.Logger;
 interface Icalculator
 {
-     void calc(int value);
+     int calc(int value,int result);
 }
- class Operation
+abstract class Operation
 {
     public static final Logger Log=Logger.getLogger(("InfoLogging"));
 
-    static int result;
     private int value;
 
     public void setValue(int value)
@@ -22,7 +21,7 @@ interface Icalculator
     }
 
 
-    public void display()
+    public void display(int result)
     {
         String print="Result:"+result;
         Log.info(print);
@@ -30,36 +29,30 @@ interface Icalculator
 }
 class Addition extends Operation implements Icalculator
 {
-    public void calc(int value)
+    public int calc(int value,int result)
     {
-        result=result+value;
+        return result+value;
     }
 }
 class Subtraction extends Operation implements Icalculator
 {
-    public void calc(int value)
+    public int calc(int value,int result)
     {
-        result=result-value;
+        return result-value;
     }
 }
 class Division extends Operation implements Icalculator
 {
-    public void calc(int value)
+    public int calc(int value,int result)
     {
-        try {
-            result = (result/value);
-        }catch (Exception e)
-        {
-            String p=""+e;
-            Log.info(p);
-        }
+        return result/value;
     }
 }
 class Multiplication extends Operation implements Icalculator
 {
-    public void calc(int value)
+    public int calc(int value,int result)
     {
-        result=result*value;
+        return result*value;
     }
 }
 public class Calculator
@@ -73,12 +66,13 @@ public class Calculator
         Multiplication mul=new Multiplication();
         Scanner input=new Scanner(System.in);
         Log.info("Enter the Value:");
-        add.result = input.nextInt();
+        int r= input.nextInt();
         int value=0;
         while(true)
         {
-            Log.info("\n1.Addtion(+)\n2.Substration(-)\n3.Multiplication(*)\n4.Division(/)\n5.Result\n6.Exit\nEnter The Choice:");
+            Log.info("\n1.Addtion(+)\n2.Substration(-)\n3.Multiplication(*)\n4.Division(/)\n5.Result\n6.Exit\nEnter The Choice:\n");
             int key = input.nextInt();
+
             if(key!=5)
             {
                 Log.info("Enter the Value:");
@@ -87,11 +81,11 @@ public class Calculator
                 value = add.getValue();
             }
             switch (key) {
-                case 1 -> add.calc(value);
-                case 2 -> sub.calc(value);
-                case 3 -> mul.calc(value);
-                case 4 -> div.calc(value);
-                case 5 -> add.display();
+                case 1 -> r=add.calc(value,r);
+                case 2 -> r=sub.calc(value,r);
+                case 3 -> r=mul.calc(value,r);
+                case 4 -> r=div.calc(value,r);
+                case 5 -> add.display(r);
                 case 6 ->
                 {
                     Log.info("-----Thannk You-----");
