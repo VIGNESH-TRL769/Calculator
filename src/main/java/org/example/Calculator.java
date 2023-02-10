@@ -5,11 +5,11 @@ interface Icalculator
 {
      void calc(int value);
 }
-abstract class Operation
+ class Operation
 {
     public static final Logger Log=Logger.getLogger(("InfoLogging"));
-    
-    int result;
+
+    static int result;
     private int value;
 
     public void setValue(int value)
@@ -21,10 +21,10 @@ abstract class Operation
         return value;
     }
 
-   
+
     public void display()
     {
-        String print="Result:"+result; 
+        String print="Result:"+result;
         Log.info(print);
     }
 }
@@ -47,7 +47,7 @@ class Division extends Operation implements Icalculator
     public void calc(int value)
     {
         try {
-            result = result / value;
+            result = (result/value);
         }catch (Exception e)
         {
             String p=""+e;
